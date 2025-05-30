@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
   AOS.init();
 });
 
-// Theme Toggle Function
+// Theme Toggle
 function toggleTheme() {
   const html = document.documentElement;
   const currentTheme = html.getAttribute('data-bs-theme');
@@ -11,13 +11,14 @@ function toggleTheme() {
   html.setAttribute('data-bs-theme', newTheme);
 }
 
-// Scroll to Top Functionality
+// Scroll to Top
+const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+
 window.onscroll = function () {
-  const btn = document.getElementById('scrollToTopBtn');
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-    btn.style.display = 'block';
+    scrollToTopBtn.style.display = 'block';
   } else {
-    btn.style.display = 'none';
+    scrollToTopBtn.style.display = 'none';
   }
 };
 
@@ -25,3 +26,6 @@ function scrollToTop() {
   document.body.scrollTop = 0;
   document.documentElement.scrollTop = 0;
 }
+
+// Initialize AOS
+AOS.init();
