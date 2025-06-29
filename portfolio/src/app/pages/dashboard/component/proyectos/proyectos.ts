@@ -1,8 +1,10 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-proyectos',
-  imports: [],
+  standalone:true,
+  imports:[CommonModule],
   templateUrl: './proyectos.html',
   styleUrl: './proyectos.css'
 })
