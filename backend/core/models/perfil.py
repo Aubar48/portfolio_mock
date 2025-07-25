@@ -10,6 +10,7 @@ class Perfil(models.Model):
     imagen = models.ImageField(upload_to='perfil/', blank=True, null=True)
     linkedin = models.URLField(blank=True, null=True)
     github = models.URLField(blank=True, null=True)
+    publicado = models.BooleanField(default=True)  # ← Campo nuevo
 
     def __str__(self):
         return f"{self.nombre} ({self.user.username})"

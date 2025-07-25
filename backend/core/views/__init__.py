@@ -4,6 +4,5 @@ from .tecnologias import TecnologiaViewSet
 from .educaciones import EducacionViewSet
 from .usuarios import UsuarioViewSet
 from .perfil import PerfilViewSet
-from .home import HomeView
 
 

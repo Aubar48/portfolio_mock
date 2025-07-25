@@ -1,16 +1,20 @@
-from rest_framework import viewsets
-from rest_framework.permissions import IsAuthenticated
+from rest_framework import viewsets 
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from ..models import Proyecto
 from ..serializers import ProyectoSerializer
 
 class ProyectoViewSet(viewsets.ModelViewSet):
     serializer_class = ProyectoSerializer
-    permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def get_queryset(self):
-        # Retorna solo los proyectos del usuario autenticado
-        return Proyecto.objects.filter(usuario=self.request.user)
+        user = self.request.user
+        if user.is_authenticated:
+            # Si está autenticado, muestra solo sus propios proyectos
+            return Proyecto.objects.filter(usuario=user)
+        else:
+            # Si no está autenticado, muestra solo los proyectos públicos
+            return Proyecto.objects.filter(publicado=True)
 
     def perform_create(self, serializer):
-        # Al crear, asigna automáticamente el usuario autenticado
         serializer.save(usuario=self.request.user)
