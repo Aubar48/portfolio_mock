@@ -3,10 +3,14 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.exceptions import PermissionDenied
 from core.models import Perfil
 from core.serializers import PerfilSerializer
+from rest_framework.renderers import JSONRenderer
+from rest_framework.parsers import MultiPartParser, FormParser, JSONParser
 
 class PerfilViewSet(viewsets.ModelViewSet):
     serializer_class = PerfilSerializer
     permission_classes = [IsAuthenticatedOrReadOnly]
+    renderer_classes = [JSONRenderer]  # <-- forzar JSON
+    parser_classes = [MultiPartParser, FormParser, JSONParser]  # ✅ Acepta JSON también
 
     def get_queryset(self):
         user = self.request.user

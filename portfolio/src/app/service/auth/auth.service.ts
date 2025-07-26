@@ -1,68 +1,71 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-
-
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = `${environment.apiUrl}/token/`;
-  private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.hasToken());
+  private apiUrl = environment.apiUrl;
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(false);
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+    if (this.canUseLocalStorage()) {
+      const hasToken = !!localStorage.getItem('access_token');
+      this.isAuthenticatedSubject.next(hasToken);
+    }
+  }
 
-  // Login
   login(credentials: { username: string; password: string }): Observable<any> {
-    return this.http.post(`${this.apiUrl}/token/`, credentials).pipe(
+    return this.http.post(`${this.apiUrl}token/`, credentials).pipe(
       tap((response: any) => {
-        localStorage.setItem('token', response.access);
-        this.isAuthenticatedSubject.next(true);
+        if (this.canUseLocalStorage() && response.access) {
+          localStorage.setItem('access_token', response.access);
+          this.isAuthenticatedSubject.next(true);
+        }
       })
     );
   }
 
-  // Registro
   register(userData: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register/`, userData);
+    return this.http.post(`${this.apiUrl}register/`, userData);
   }
 
-  // Logout
   logout(): void {
-    localStorage.removeItem('token');
+    if (this.canUseLocalStorage()) {
+      localStorage.removeItem('access_token');
+    }
     this.isAuthenticatedSubject.next(false);
     this.router.navigate(['/']);
   }
 
-  // Saber si hay token
   isLoggedIn(): Observable<boolean> {
     return this.isAuthenticatedSubject.asObservable();
   }
 
-  private hasToken(): boolean {
-    return !!localStorage.getItem('token');
-  }
-
-  // Obtener token
   getToken(): string | null {
-    return localStorage.getItem('token');
+    return this.canUseLocalStorage() ? localStorage.getItem('access_token') : null;
   }
 
-  // Obtener headers con token para usar en otros servicios
   getAuthHeaders(): HttpHeaders {
     const token = this.getToken();
-    return new HttpHeaders({
-      Authorization: `Bearer ${token}`
+    if (token) {
+      return new HttpHeaders({
+        Authorization: `Bearer ${token}`
+      });
+    }
+    return new HttpHeaders();
+  }
+
+  getUserProfile(): Observable<any> {
+    return this.http.get(`${this.apiUrl}perfil/`, {
+      headers: this.getAuthHeaders()
     });
   }
 
-  // Podés agregar métodos para obtener el perfil, etc.
-  getUserProfile(): Observable<any> {
-    return this.http.get(`${this.apiUrl}/profile/`, {
-      headers: this.getAuthHeaders()
-    });
+  private canUseLocalStorage(): boolean {
+    return typeof window !== 'undefined' && typeof localStorage !== 'undefined';
   }
 }

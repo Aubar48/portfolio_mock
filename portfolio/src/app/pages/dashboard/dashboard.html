@@ -1,5 +1,24 @@
-<app-header></app-header>
-<app-sobre-mi></app-sobre-mi>
-<app-educacion></app-educacion>
-<app-experiencia></app-experiencia>
-<app-proyectos></app-proyectos>
+<!-- dashboard.component.html -->
+<div class="container mt-4">
+  <nav class="nav nav-pills mb-3">
+    <button class="nav-link" [class.active]="seccion === 'sobre-mi'" (click)="cambiarSeccion('sobre-mi')">Sobre
+      mí</button>
+    <button class="nav-link" [class.active]="seccion === 'educacion'"
+      (click)="cambiarSeccion('educacion')">Educación</button>
+    <button class="nav-link" [class.active]="seccion === 'experiencia'"
+      (click)="cambiarSeccion('experiencia')">Experiencia</button>
+    <button class="nav-link" [class.active]="seccion === 'proyectos'"
+      (click)="cambiarSeccion('proyectos')">Proyectos</button>
+    <button class="nav-link" [class.active]="seccion === 'tecnologias'"
+      (click)="cambiarSeccion('tecnologias')">Tecnologias</button>
+  </nav>
+
+  <div class="mt-3">
+    <app-sobre-mi *ngIf="seccion === 'sobre-mi'"></app-sobre-mi>
+    <app-educacion *ngIf="seccion === 'educacion'"></app-educacion>
+    <app-experiencia *ngIf="seccion === 'experiencia'"></app-experiencia>
+    <app-proyectos *ngIf="seccion === 'proyectos'"></app-proyectos>
+    <app-tecnologias *ngIf="seccion === 'tecnologias'"></app-tecnologias>
+
+  </div>
+</div>

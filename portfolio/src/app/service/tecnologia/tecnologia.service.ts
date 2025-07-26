@@ -8,24 +8,20 @@ import { environment } from '../../../environments/environment';
   providedIn: 'root'
 })
 export class TecnologiaService {
-  private apiUrl = `${environment.apiUrl}/tecnologias/`;
+  private apiUrl = `${environment.apiUrl}tecnologias/`;
 
   constructor(private http: HttpClient) {}
 
-  getTecnologias(): Observable<Tecnologia[]> {
+  obtenerTecnologias(): Observable<Tecnologia[]> {
     return this.http.get<Tecnologia[]>(this.apiUrl);
   }
 
-  getTecnologia(id: number): Observable<Tecnologia> {
-    return this.http.get<Tecnologia>(`${this.apiUrl}${id}/`);
+  crearTecnologia(data: any): Observable<Tecnologia> {
+    return this.http.post<Tecnologia>(this.apiUrl, data);
   }
 
-  crearTecnologia(tecnologia: Tecnologia): Observable<Tecnologia> {
-    return this.http.post<Tecnologia>(this.apiUrl, tecnologia);
-  }
-
-  actualizarTecnologia(id: number, tecnologia: Tecnologia): Observable<Tecnologia> {
-    return this.http.put<Tecnologia>(`${this.apiUrl}${id}/`, tecnologia);
+  actualizarTecnologia(id: number, data: any): Observable<Tecnologia> {
+    return this.http.put<Tecnologia>(`${this.apiUrl}${id}/`, data);
   }
 
   eliminarTecnologia(id: number): Observable<any> {

@@ -1,1 +1,77 @@
-<p>sobre-mi works!</p>
+<h3>Perfiles</h3>
+
+<div *ngFor="let perfil of perfiles" class="card mb-2 p-2">
+  <div style="display: flex; align-items: center; gap: 10px;">
+    <img
+      *ngIf="perfil.imagen"
+      [src]="perfil.imagen || 'assets/morgan.png' "
+      alt="Foto de perfil"
+      style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%; border: 1px solid #ccc;"
+    />
+    <div>
+      <strong>{{ perfil.nombre }}</strong> - {{ perfil.titulo }}<br />
+      <small>{{ perfil.descripcion }}</small>
+    </div>
+    <div style="margin-left: auto;">
+      <button class="btn btn-primary btn-sm me-1" (click)="editarPerfil(perfil)">Editar</button>
+      <button class="btn btn-danger btn-sm" (click)="eliminarPerfil(perfil.id)">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+
+<br>
+<h3>Editar / Agregar Perfil</h3>
+
+<div style="display: flex; gap: 20px; align-items: flex-start;">
+  <form [formGroup]="form" (ngSubmit)="enviarFormulario()" style="flex: 1;">
+    <div class="mb-3">
+      <label class="form-label">Nombre</label>
+      <input class="form-control" formControlName="nombre" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Título</label>
+      <input class="form-control" formControlName="titulo" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Descripción</label>
+      <textarea class="form-control" formControlName="descripcion"></textarea>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Sobre mí</label>
+      <textarea class="form-control" formControlName="sobre_mi"></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Imagen (archivo)</label>
+      <input type="file" class="form-control" (change)="onFileSelected($event)" accept="image/*" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">LinkedIn</label>
+      <input class="form-control" formControlName="linkedin" />
+    </div>
+    <div class="mb-3">
+      <label class="form-label">GitHub</label>
+      <input class="form-control" formControlName="github" />
+    </div>
+
+    <button class="btn btn-success me-2" type="submit">
+      {{ editando ? 'Actualizar' : 'Crear' }}
+    </button>
+    <button *ngIf="editando" type="button" class="btn btn-secondary" (click)="cancelarEdicion()">
+      Cancelar
+    </button>
+  </form>
+
+  <div style="width: 200px; text-align: center;">
+    <p><strong>Previsualización:</strong></p>
+    <img
+      *ngIf="imagenPreview"
+      [src]="imagenPreview"
+      alt="Previsualización"
+      style="max-width: 100%; max-height: 200px; border: 1px solid #ddd; border-radius: 5px;"
+    />
+    <p *ngIf="!imagenPreview" style="color: #999;">No hay imagen seleccionada</p>
+  </div>
+</div>

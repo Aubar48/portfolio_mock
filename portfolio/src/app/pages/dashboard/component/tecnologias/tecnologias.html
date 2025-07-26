@@ -1,0 +1,46 @@
+<h3>Tecnologías</h3>
+
+<div *ngFor="let tecnologia of tecnologias" class="card mb-2 p-2">
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <div style="font-size: 24px; width: 50px; text-align: center;">
+            <i class="{{ tecnologia.icono }}"></i> <!-- Si usás iconos fontawesome o similares -->
+        </div>
+        <div>
+            <strong>{{ tecnologia.nombre }}</strong><br />
+            <small *ngIf="tecnologia.publicado" class="text-success">Publicado</small>
+            <small *ngIf="!tecnologia.publicado" class="text-muted">No publicado</small>
+        </div>
+        <div style="margin-left: auto;">
+            <button class="btn btn-primary btn-sm me-1" (click)="editarTecnologia(tecnologia)">Editar</button>
+            <button class="btn btn-danger btn-sm" (click)="eliminarTecnologia(tecnologia.id!)">Eliminar</button>
+        </div>
+    </div>
+</div>
+
+<br />
+<h3>Editar / Agregar Tecnología</h3>
+
+<form [formGroup]="form" (ngSubmit)="enviarFormulario()" style="max-width: 400px;">
+    <div class="mb-3">
+        <label class="form-label">Nombre</label>
+        <input class="form-control" formControlName="nombre" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Ícono (clase CSS)</label>
+        <input class="form-control" formControlName="icono" placeholder="ej: fab fa-python" />
+        <small class="form-text text-muted">Ejemplo: <code>fab fa-python</code> para FontAwesome</small>
+    </div>
+
+    <div class="form-check mb-3">
+        <input type="checkbox" class="form-check-input" formControlName="publicado" id="publicadoCheck" />
+        <label for="publicadoCheck" class="form-check-label">Publicado</label>
+    </div>
+
+    <button class="btn btn-success me-2" type="submit">
+        {{ editando ? 'Actualizar' : 'Crear' }}
+    </button>
+    <button *ngIf="editando" type="button" class="btn btn-secondary" (click)="cancelarEdicion()">
+        Cancelar
+    </button>
+</form>

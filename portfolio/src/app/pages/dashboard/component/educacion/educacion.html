@@ -1,1 +1,59 @@
-<p>educacion works!</p>
+<h3>Educaciones</h3>
+
+<div *ngFor="let edu of educaciones" class="card mb-2 p-2">
+  <div style="display: flex; align-items: center; gap: 10px;">
+    <img
+      *ngIf="edu.logo"
+      [src]="edu.logo"
+      alt="Logo"
+      style="width: 50px; height: 50px; object-fit: contain; border: 1px solid #ccc;"
+    />
+    <div>
+      <strong>{{ edu.titulo }}</strong> - {{ edu.institucion }}<br />
+      <small>{{ edu.fecha }}</small>
+    </div>
+    <div style="margin-left: auto;">
+      <button class="btn btn-primary btn-sm me-1" (click)="editarEducacion(edu)">Editar</button>
+      <button class="btn btn-danger btn-sm" (click)="eliminarEducacion(edu.id!)">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<br />
+<h3>Editar / Agregar Educación</h3>
+
+<form [formGroup]="form" (ngSubmit)="enviarFormulario()" style="max-width: 500px;">
+  <div class="mb-3">
+    <label class="form-label">Título</label>
+    <input class="form-control" formControlName="titulo" />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Institución</label>
+    <input class="form-control" formControlName="institucion" />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Fecha</label>
+    <input class="form-control" formControlName="fecha" />
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Logo (archivo)</label>
+    <input type="file" class="form-control" (change)="onFileSelected($event)" accept="image/*" />
+  </div>
+
+  <div style="text-align: center; margin-bottom: 10px;">
+    <img
+      *ngIf="logoPreview"
+      [src]="logoPreview"
+      alt="Previsualización"
+      style="max-width: 100%; max-height: 150px; border: 1px solid #ddd; border-radius: 5px;"
+    />
+    <p *ngIf="!logoPreview" style="color: #999;">No hay logo seleccionado</p>
+  </div>
+
+  <button class="btn btn-success me-2" type="submit">
+    {{ editando ? 'Actualizar' : 'Crear' }}
+  </button>
+  <button *ngIf="editando" type="button" class="btn btn-secondary" (click)="cancelarEdicion()">
+    Cancelar
+  </button>
+</form>

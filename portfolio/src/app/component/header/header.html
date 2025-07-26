@@ -1,6 +1,9 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg px-4 sticky-top shadow">
+
   <div class="container">
+    <img src="./assets/morgan.png" class="rounded cursor-pointer link-img" alt="ir al home" width="60" height="60"
+      (click)="goToHome()" (keydown)="handleKey($event)" tabindex="0" role="button">
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
       aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -17,16 +20,63 @@
             <img src="./assets/icon/icons8-whatsapp.svg" class="wsp" alt="WhatsApp" width="40" height="40">
           </a>
         </li>
+        <!-- Si NO está logueado -->
+        <ng-container *ngIf="!isLoggedIn">
+          <li class="nav-item">
+            <button type="button" class="btn btn-outline-success nav-link mt-2" data-bs-toggle="modal"
+              data-bs-target="#authModal" (click)="authMode = 'register'">
+              Registrarse
+            </button>
+          </li>
+          <li class="nav-item">
+            <button type="button" class="btn btn-outline-success nav-link mt-2" data-bs-toggle="modal"
+              data-bs-target="#authModal" (click)="authMode = 'login'">
+              Iniciar Sesión
+            </button>
+          </li>
+        </ng-container>
+
+        <!-- Si está logueado -->
+        <ng-container *ngIf="isLoggedIn">
+          <li class="nav-item">
+            <button class="btn btn-outline-success nav-link mt-2" (click)="goToDashboard()">
+              Dashboard
+            </button>
+          </li>
+          <li class="nav-item">
+            <button class="btn btn-outline-danger nav-link mt-2" (click)="logout()">
+              Cerrar Sesión
+            </button>
+          </li>
+        </ng-container>
       </ul>
     </div>
   </div>
 
 </nav>
+
 <!-- Al final de header.html -->
-<button
-  #scrollBtn
-  class="btn btn-primary"
-  (click)="scrollToTop()"
+<button #scrollBtn class="btn btn-primary" (click)="scrollToTop()"
   style="display: none; position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
   ↑
 </button>
+
+<!-- Modal Unificado -->
+<div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="authModalLabel">
+          {{ authMode === 'register' ? 'Registrarse' : 'Iniciar sesión' }}
+        </h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <app-register *ngIf="authMode === 'register'" (switchToLogin)="onSwitchToLogin()">
+        </app-register>
+        <app-login *ngIf="authMode === 'login'" (switchToRegister)="onSwitchToRegister()">
+        </app-login>
+      </div>
+    </div>
+  </div>
+</div>

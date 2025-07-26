@@ -21,13 +21,15 @@ export class PerfilService {
     return this.http.get<Perfil>(`${this.apiUrl}${id}/`);
   }
 
-  crearPerfil(perfil: Perfil): Observable<Perfil> {
-    return this.http.post<Perfil>(this.apiUrl, perfil);
-  }
+crearPerfil(formData: FormData): Observable<any> {
+  return this.http.post(`${this.apiUrl}`, formData);
+}
 
-  actualizarPerfil(id: number, perfil: Perfil): Observable<Perfil> {
-    return this.http.put<Perfil>(`${this.apiUrl}${id}/`, perfil);
-  }
+actualizarPerfil(id: number, formData: FormData): Observable<any> {
+  return this.http.put(`${this.apiUrl}${id}/`, formData);
+}
+
+
 
   eliminarPerfil(id: number): Observable<any> {
     return this.http.delete(`${this.apiUrl}${id}/`);

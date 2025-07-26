@@ -1,6 +1,7 @@
 export interface Tecnologia {
-  id?: number;           // ← opcional para cuando creás nuevas
+  id?: number;
   nombre: string;
   icono: string;
-  user: number;          // ID del usuario (ForeignKey en Django)
+  publicado: boolean;
+  user?: number;
 }

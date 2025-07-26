@@ -1,18 +1,23 @@
 import { Component } from '@angular/core';
-import { HeaderComponent } from "../../component/header/header";
 import { SobreMi } from './component/sobre-mi/sobre-mi';
-import { Educacion } from './component/educacion/educacion';
-import { Experiencia } from './component/experiencia/experiencia';
-import { Proyectos } from './component/proyectos/proyectos';
+import { EducacionComponent } from './component/educacion/educacion';
+import { ExperienciaComponent } from './component/experiencia/experiencia';
+import { ProyectosComponent } from './component/proyectos/proyectos';
 import { CommonModule } from '@angular/common';
+import { TecnologiasComponent } from "./component/tecnologias/tecnologias";
 
 @Component({
   selector: 'app-dashboard',
   standalone:true,
-  imports: [CommonModule,SobreMi, Educacion, Experiencia, Proyectos, HeaderComponent],
+  imports: [CommonModule, SobreMi, EducacionComponent, ExperienciaComponent, ProyectosComponent,TecnologiasComponent],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.css'
 })
 export class Dashboard {
 
+   seccion: string = 'sobre-mi';
+
+  cambiarSeccion(nombre: string) {
+    this.seccion = nombre;
+  }
 }

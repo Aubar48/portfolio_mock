@@ -1,1 +1,68 @@
-<p>proyectos works!</p>
+<h3>Proyectos</h3>
+
+<div *ngFor="let proyecto of proyectos" class="card mb-2 p-2">
+    <div style="display: flex; align-items: center; gap: 10px;">
+        <img *ngIf="proyecto.imagen" [src]="proyecto.imagen" alt="Imagen proyecto"
+            style="width: 50px; height: 50px; object-fit: cover; border-radius: 5px; border: 1px solid #ccc;" />
+        <div>
+            <strong>{{ proyecto.titulo }}</strong><br />
+            <small>{{ proyecto.descripcion }}</small><br />
+            <small><em>Tecnologías: </em>{{ getNombresTecnologias(proyecto.tecnologias) }}</small>
+        </div>
+        <div style="margin-left: auto;">
+            <button class="btn btn-primary btn-sm me-1" (click)="editarProyecto(proyecto)">Editar</button>
+            <button class="btn btn-danger btn-sm" (click)="eliminarProyecto(proyecto.id!)">Eliminar</button>
+        </div>
+    </div>
+</div>
+
+<br />
+<h3>{{ editando ? 'Editar' : 'Agregar' }} Proyecto</h3>
+
+<form [formGroup]="form" (ngSubmit)="enviarFormulario()" style="max-width: 600px;">
+    <div class="mb-3">
+        <label class="form-label">Título</label>
+        <input class="form-control" formControlName="titulo" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Descripción</label>
+        <textarea class="form-control" formControlName="descripcion"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Demo URL</label>
+        <input class="form-control" formControlName="demo_url" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Código URL</label>
+        <input class="form-control" formControlName="codigo_url" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Tecnologías</label>
+        <select class="form-select" formControlName="tecnologias" multiple>
+            <option *ngFor="let tec of tecnologias" [ngValue]="tec">{{ tec.nombre }}</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Imagen (archivo)</label>
+        <input type="file" class="form-control" (change)="onFileSelected($event)" accept="image/*" />
+    </div>
+
+    <div style="max-width: 200px; margin-bottom: 20px;">
+        <p><strong>Previsualización:</strong></p>
+        <img *ngIf="imagenPreview" [src]="imagenPreview" alt="Previsualización"
+            style="max-width: 100%; border-radius: 5px;" />
+        <p *ngIf="!imagenPreview" style="color: #999;">No hay imagen seleccionada</p>
+    </div>
+
+    <button class="btn btn-success me-2" type="submit">
+        {{ editando ? 'Actualizar' : 'Crear' }}
+    </button>
+    <button *ngIf="editando" type="button" class="btn btn-secondary" (click)="cancelarEdicion()">
+        Cancelar
+    </button>
+</form>

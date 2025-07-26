@@ -1,1 +1,61 @@
-<p>experiencia works!</p>
+<h3>Experiencias</h3>
+
+<div *ngFor="let exp of experiencias" class="card mb-2 p-2">
+  <div style="display: flex; align-items: center; gap: 10px;">
+    <img
+      *ngIf="exp.logo"
+      [src]="exp.logo"
+      alt="Logo de empresa"
+      style="width: 50px; height: 50px; object-fit: contain; border-radius: 5px; border: 1px solid #ccc;"
+    />
+    <div>
+      <strong>{{ exp.puesto }}</strong> - {{ exp.empresa }}<br />
+      <small>{{ exp.fecha }}</small>
+    </div>
+    <div style="margin-left: auto;">
+      <button class="btn btn-primary btn-sm me-1" (click)="editarExperiencia(exp)">Editar</button>
+      <button class="btn btn-danger btn-sm" (click)="eliminarExperiencia(exp.id!)">Eliminar</button>
+    </div>
+  </div>
+</div>
+
+<br />
+<h3>Editar / Agregar Experiencia</h3>
+
+<div style="display: flex; gap: 20px; align-items: flex-start;">
+  <form [formGroup]="form" (ngSubmit)="enviarFormulario()" style="flex: 1;">
+    <div class="mb-3">
+      <label class="form-label">Puesto</label>
+      <input class="form-control" formControlName="puesto" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Empresa</label>
+      <input class="form-control" formControlName="empresa" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Fecha</label>
+      <input class="form-control" formControlName="fecha" />
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Logo (archivo)</label>
+      <input type="file" class="form-control" (change)="onFileSelected($event)" accept="image/*" />
+    </div>
+
+    <div class="mb-3">
+      <p><strong>Previsualización:</strong></p>
+      <img
+        *ngIf="logoPreview"
+        [src]="logoPreview"
+        alt="Previsualización"
+        style="max-width: 100%; max-height: 200px; border: 1px solid #ddd; border-radius: 5px;"
+      />
+      <p *ngIf="!logoPreview" style="color: #999;">No hay logo seleccionado</p>
+    </div>
+
+    <button class="btn btn-success me-2" type="submit">{{ editando ? 'Actualizar' : 'Crear' }}</button>
+    <button *ngIf="editando" type="button" class="btn btn-secondary" (click)="cancelarEdicion()">Cancelar</button>
+  </form>
+</div>

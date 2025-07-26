@@ -1,61 +1,52 @@
 <!-- Proyectos -->
 <div class="col-12">
-    <h2 class="text-center text-primary mb-4">Proyectos Destacados</h2>
-    <div class="row">
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm">
-                <img src="./assets/proyectos/pokemon.png" class="project-image" alt="E-commerce Platform">
-                <div class="card-body">
-                    <h5 class="card-title">Pokemon list</h5>
-                    <p class="card-text">Se utilizo la api de pokemon para hacer una lista mostrada en cartas.</p>
-                    <div class="d-flex gap-2 mb-3">
-                        <span class="badge bg-primary">Angular</span>
-                        <span class="badge bg-success">Css</span>
-                        <span class="badge bg-info">Typescript</span>
-                    </div>
-                    <div class="d-flex gap-2">
-                        <a href="https://allpokemoncard48.netlify.app/" class="btn btn-outline-primary btn-sm">Demo</a>
-                        <a href="https://github.com/Aubar48/angular_list_pokemon"
-                            class="btn btn-outline-secondary btn-sm">Código</a>
-                    </div>
-                </div>
-            </div>
+  <h2 class="text-center text-primary mb-4">Proyectos Destacados</h2>
+  <div class="row">
+    <div class="col-md-4 mb-4" *ngFor="let proyecto of proyectos">
+      <div class="card h-100 shadow-sm">
+        <img 
+          [src]="
+            proyecto.imagen && typeof proyecto.imagen === 'string'
+              ? proyecto.imagen
+              : 'https://github.com/Aubar48/app-clima-react/raw/master/public/app-clima.png'
+          " 
+          class="project-image" 
+          [alt]="proyecto.titulo"
+          />
+        <div class="card-body">
+          <h5 class="card-title">{{ proyecto.titulo }}</h5>
+          <p class="card-text">{{ proyecto.descripcion }}</p>
+          <div class="d-flex gap-2 mb-3">
+            <span *ngFor="let tec of proyecto.tecnologias" 
+                  class="badge" 
+                  [ngClass]="{
+                    'bg-primary': tec.nombre.toLowerCase().includes('angular'),
+                    'bg-success': tec.nombre.toLowerCase().includes('css'),
+                    'bg-info': tec.nombre.toLowerCase().includes('typescript'),
+                    'bg-warning text-dark': tec.nombre.toLowerCase().includes('react'),
+                    'bg-secondary': true
+                  }">
+              {{ tec.nombre }}
+            </span>
+          </div>
+          <div class="d-flex gap-2">
+            <a *ngIf="proyecto.demo_url" 
+               [href]="proyecto.demo_url" 
+               target="_blank" 
+               rel="noopener" 
+               class="btn btn-outline-primary btn-sm">
+              Demo
+            </a>
+            <a *ngIf="proyecto.codigo_url" 
+               [href]="proyecto.codigo_url" 
+               target="_blank" 
+               rel="noopener" 
+               class="btn btn-outline-secondary btn-sm">
+              Código
+            </a>
+          </div>
         </div>
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm">
-                <img src="https://github.com/Aubar48/Huggins/raw/master/public/images/lcrCrows.png"
-                    class="project-image" alt="Task Manager">
-                <div class="card-body">
-                    <h5 class="card-title">Huggins landing page</h5>
-                    <p class="card-text">Landing page para el gremio Huggins del video juego Night Crows.</p>
-                    <div class="d-flex gap-2 mb-3">
-                        <span class="badge bg-primary">React</span>
-                        <span class="badge bg-success">Tailwindcss</span>
-                    </div>
-                    <div class="d-flex gap-2">
-                        <a href="https://latincrowshuginn.netlify.app/" class="btn btn-outline-primary btn-sm">Demo</a>
-                        <a href="https://github.com/Aubar48/Huggins" class="btn btn-outline-secondary btn-sm">Código</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4 mb-4">
-            <div class="card h-100 shadow-sm">
-                <img src="https://github.com/Aubar48/Huggins/raw/master/public/images/lcrCrows.png"
-                    class="project-image" alt="Task Manager">
-                <div class="card-body">
-                    <h5 class="card-title">Huggins landing page</h5>
-                    <p class="card-text">Landing page para el gremio Huggins del video juego Night Crows.</p>
-                    <div class="d-flex gap-2 mb-3">
-                        <span class="badge bg-primary">React</span>
-                        <span class="badge bg-success">Tailwindcss</span>
-                    </div>
-                    <div class="d-flex gap-2">
-                        <a href="https://latincrowshuginn.netlify.app/" class="btn btn-outline-primary btn-sm">Demo</a>
-                        <a href="https://github.com/Aubar48/Huggins" class="btn btn-outline-secondary btn-sm">Código</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </div>
     </div>
+  </div>
 </div>

@@ -1,0 +1,68 @@
+<div class="modal-body">
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="username" class="form-label">Usuario</label>
+      <input
+        id="username"
+        type="text"
+        class="form-control"
+        formControlName="username"
+        [class.is-invalid]="registerForm.get('username')?.touched && registerForm.get('username')?.invalid"
+      />
+      <div class="invalid-feedback">
+        El nombre de usuario es obligatorio.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Contraseña</label>
+      <input
+        id="password"
+        type="password"
+        class="form-control"
+        formControlName="password"
+        [class.is-invalid]="registerForm.get('password')?.touched && registerForm.get('password')?.invalid"
+      />
+      <div class="invalid-feedback">
+        La contraseña es obligatoria.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
+      <input
+        id="confirmPassword"
+        type="password"
+        class="form-control"
+        formControlName="confirmPassword"
+        [class.is-invalid]="
+          (registerForm.get('confirmPassword')?.touched &&
+            registerForm.get('confirmPassword')?.invalid) ||
+          (registerForm.hasError('passwordsMismatch') &&
+            registerForm.get('confirmPassword')?.touched)
+        "
+      />
+      <div class="invalid-feedback" *ngIf="registerForm.get('confirmPassword')?.invalid">
+        Debés confirmar la contraseña.
+      </div>
+      <div class="invalid-feedback" *ngIf="registerForm.hasError('passwordsMismatch')">
+        Las contraseñas no coinciden.
+      </div>
+    </div>
+
+    <div *ngIf="error" class="alert alert-danger py-1">{{ error }}</div>
+
+    <div class="d-grid gap-2">
+      <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">
+        Registrarse
+      </button>
+    </div>
+  </form>
+
+  <div class="text-center mt-3">
+    <a href="#" (click)="changeToLogin()" class="text-decoration-none">
+      ¿Ya tenés cuenta? Iniciar sesión
+    </a>
+  </div>
+</div>

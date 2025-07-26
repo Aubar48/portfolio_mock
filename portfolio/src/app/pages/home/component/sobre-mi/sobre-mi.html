@@ -1,48 +1,42 @@
 <!-- Sobre Mí -->
-<div class="col-12 mb-5" id="about">
+<div class="col-12 mb-5" id="about" *ngIf="perfil">
     <div class="row align-items-center">
         <div class="col-md-6">
             <p class="lead text-primary fs-5">
-                Hola, soy Nahuel Argandoña de Argentina y actualmente vivo en Córdoba Capital. Tengo 31 años y estoy estudiando la
-                Tecnicatura
-                Superior en Desarrollo de Software en el Instituto Superior Politécnico de Córdoba (ISPC).
+                Hola, soy {{ perfil.nombre }} {{ perfil.sobre_mi }}
             </p>
             <p class="lead text-primary fs-5">
-                He completado capacitaciones en Programación Web Full Stack a través de Egg Education & Argentina
-                Programa 4.0, MindHub LA & Digital House con Fundación Formar, y Argentina Programa 4.0 con la UTN.
-                Aprender y construir en tecnología es una verdadera pasión para mí. ¡Gracias por tomarte el tiempo de
-                mirar!
-                🐣
+                🐣 {{ perfil.descripcion }}
             </p>
-            <div class="social-links d-flex gap-4 fs-4 mb-3 text-primary">
-                <a href="https://github.com/Aubar48" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://www.linkedin.com/in/aubar48/" target="_blank" title="LinkedIn"><i
-                        class="fab fa-linkedin"></i></a>
-            </div>
+            <section>
+                <ul>
+                    <li>
+                        <a href="{{ perfil.github }}" target="_blank">
+                            <img class="gap-3"
+                                src="https://img.shields.io/badge/Portfolio-%23333?style=for-the-badge&logo=portfolio&logoColor=white">
+                        </a>
+                        <a href="{{ perfil.linkedin }}" target="_blank">
+                            <img class="gap-3"
+                                src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white">
+                        </a>
+                    </li>
+                </ul>
+            </section>
         </div>
         <div class="col-md-6">
-            <img src="./assets/yo.jpg" alt="Perfil"
+            <img [src]="perfil.imagen || './assets/morgan.png'" alt="Perfil"
                 class="border-bottom border-top border-primary border-3 img-fluid rounded shadow">
         </div>
         <!-- Tecnologías -->
-        <div class="mb-5">
-            <h3 class="text-primary">Tecnologias</h3>
-            <div class="d-flex flex-wrap gap-3 fs-2">
-                <i class="devicon-html5-plain colored" title="HTML5"></i>
-                <i class="devicon-css3-plain colored" title="CSS3"></i>
-                <i class="devicon-javascript-plain colored" title="JavaScript"></i>
-                <i class="devicon-typescript-plain colored" title="TypeScript"></i>
-                <i class="devicon-python-plain colored" title="Python"></i>
-                <i class="devicon-java-plain colored" title="Java"></i>
-                <i class="devicon-react-original colored" title="React"></i>
-                <i class="devicon-angularjs-plain colored" title="Angular"></i>
-                <i class="devicon-bootstrap-plain colored" title="Bootstrap"></i>
-                <i class="devicon-tailwindcss-plain colored" title="Tailwind CSS"></i>
-                <i class="devicon-mongodb-plain colored" title="MongoDB"></i>
-                <i class="devicon-mysql-plain colored" title="MySQL"></i>
-                <i class="devicon-git-plain colored" title="Git"></i>
-                <i class="devicon-github-original colored" title="GitHub"></i>
-            </div>
-        </div>
+        <section class="mb-5" *ngIf="tecnologias.length > 0">
+            <h3 class="text-primary mt-4">Tecnologías</h3>
+            <ul>
+                <li>
+                    <div class="d-flex flex-wrap gap-3 fs-2">
+                        <i *ngFor="let tech of tecnologias" [class]="tech.icono" [attr.title]="tech.nombre"></i>
+                    </div>
+                </li>
+            </ul>
+        </section>
     </div>
 </div>
