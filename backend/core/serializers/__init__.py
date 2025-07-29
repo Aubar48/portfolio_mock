@@ -5,3 +5,4 @@ from .experiencia import ExperienciaSerializer
 from .tecnologia import TecnologiaSerializer
 from .educacion import EducacionSerializer
 from .register import UserRegisterSerializer
+from .slide import SlideSerializer
