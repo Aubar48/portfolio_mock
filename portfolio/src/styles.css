@@ -94,3 +94,31 @@
   width: 31px;
   height: 31px;
 }
+
+
+.accessibility-btn {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1050;
+}
+
+.high-contrast {
+  filter: contrast(1.75) saturate(1.2);
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+.large-text * {
+  font-size: 1.05em !important;
+}
+
+.hide-image {
+  display: none !important;
+}
+
+.dropdown-menu {
+  background-color: #fff;
+  border-radius: 8px;
+  min-width: 200px;
+}

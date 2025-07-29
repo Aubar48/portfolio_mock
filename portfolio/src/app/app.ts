@@ -6,7 +6,8 @@ import { Carrousel } from './component/carrousel/carrousel';
 import { Spotify } from './component/spotify/spotify';
 import { LoaderComponent } from './component/loader/loader';
 import { CommonModule } from '@angular/common';
-import { LoadingService } from './service/loading/loading.service'; // Asegúrate de que la ruta sea correcta
+import { LoadingService } from './service/loading/loading.service';
+import { AccessibilityComponent } from "./component/accessibility/accessibility"; // Asegúrate de que la ruta sea correcta
 
 @Component({
   selector: 'app-root',
@@ -18,8 +19,9 @@ import { LoadingService } from './service/loading/loading.service'; // Asegúrat
     Footer,
     Carrousel,
     Spotify,
-    LoaderComponent
-  ],
+    LoaderComponent,
+    AccessibilityComponent
+],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

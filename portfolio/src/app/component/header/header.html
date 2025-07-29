@@ -10,16 +10,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
         <li class="nav-item">
           <button class="btn btn-outline-primary nav-link shadow-lg mt-2" (click)="toggleDarkMode()">
             <i class="fas fa-moon"></i> Dark Mode
           </button>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="https://wa.me/+5493517587047" target="_blank">
-            <img src="./assets/icon/icons8-whatsapp.svg" class="wsp" alt="WhatsApp" width="40" height="40">
-          </a>
-        </li>
+
         <!-- Si NO está logueado -->
         <ng-container *ngIf="!isLoggedIn">
           <li class="nav-item">
@@ -57,9 +54,14 @@
 
 <!-- Al final de header.html -->
 <button #scrollBtn class="btn btn-primary" (click)="scrollToTop()"
-  style="display: none; position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+  style="display: none; position: fixed; bottom: 20px; left: 20px; z-index: 9999;">
   ↑
 </button>
+
+<a href="https://wa.me/+5493517587047" target="_blank"
+  style="display: block; position: fixed; bottom: 20px; right: 20px; z-index: 9999;">
+  <img src="./assets/icon/icons8-whatsapp.svg" alt="WhatsApp" width="40" height="40">
+</a>
 
 <!-- Modal Unificado -->
 <div class="modal fade" id="authModal" tabindex="-1" aria-labelledby="authModalLabel" aria-hidden="true">

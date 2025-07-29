@@ -1,0 +1,11 @@
+<div class="dropdown">
+    <button class="btn btn-light accessibility-btn shadow" type="button" (click)="toggleMenu()">
+        ♿
+    </button>
+    <ul *ngIf="menuOpen" class="dropdown-menu show p-2 shadow">
+        <li><button class="dropdown-item" (click)="toggleContrast()">Contraste +</button></li>
+        <li><button class="dropdown-item" (click)="toggleLargeText()">Texto grande</button></li>
+        <li><button class="dropdown-item" (click)="toggleHideImages()">Ocultar imágenes</button></li>
+        <li><button class="dropdown-item text-danger" (click)="resetAccessibility()">Restaurar todo</button></li>
+    </ul>
+</div>
