@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Educacion } from '../../models/educacion.model';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
@@ -20,15 +20,28 @@ export class EducacionService {
     return this.http.get<Educacion>(`${this.apiUrl}${id}/`);
   }
 
-  crearEducacion(edu: Educacion): Observable<Educacion> {
-    return this.http.post<Educacion>(this.apiUrl, edu);
-  }
+crearEducacion(formData: FormData): Observable<Educacion> {
+  const token = localStorage.getItem('access_token');
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.post<Educacion>(this.apiUrl, formData, { headers });
+}
 
-  actualizarEducacion(id: number, edu: Educacion): Observable<Educacion> {
-    return this.http.put<Educacion>(`${this.apiUrl}${id}/`, edu);
-  }
+actualizarEducacion(id: number, formData: FormData): Observable<Educacion> {
+  const token = localStorage.getItem('access_token');
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.put<Educacion>(`${this.apiUrl}${id}/`, formData, { headers });
+}
 
-  eliminarEducacion(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}${id}/`);
-  }
+eliminarEducacion(id: number): Observable<any> {
+  const token = localStorage.getItem('access_token');
+  const headers = {
+    Authorization: `Bearer ${token}`
+  };
+  return this.http.delete(`${this.apiUrl}${id}/`, { headers });
+}
+
 }

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Experiencia } from '../../models/experiencia.model';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
@@ -21,17 +21,30 @@ export class ExperienciaService {
   }
 
   crearExperiencia(exp: Experiencia): Observable<Experiencia> {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+      // No definir Content-Type para que Angular gestione FormData
+    });
     const formData = this.buildFormData(exp);
-    return this.http.post<Experiencia>(this.apiUrl, formData);
+    return this.http.post<Experiencia>(this.apiUrl, formData, { headers });
   }
 
   actualizarExperiencia(id: number, exp: Experiencia): Observable<Experiencia> {
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
     const formData = this.buildFormData(exp);
-    return this.http.put<Experiencia>(`${this.apiUrl}${id}/`, formData);
+    return this.http.put<Experiencia>(`${this.apiUrl}${id}/`, formData, { headers });
   }
 
   eliminarExperiencia(id: number): Observable<any> {
-    return this.http.delete(`${this.apiUrl}${id}/`);
+    const token = localStorage.getItem('access_token');
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`
+    });
+    return this.http.delete(`${this.apiUrl}${id}/`, { headers });
   }
 
   private buildFormData(exp: Experiencia): FormData {
@@ -42,9 +55,9 @@ export class ExperienciaService {
 
     if (exp.logo instanceof File) {
       formData.append('logo', exp.logo);
-    } else if (typeof exp.logo === 'string') {
-      // En caso que envíes URL o string vacío (no subir)
-      formData.append('logo', exp.logo);
+    } else if (typeof exp.logo === 'string' && exp.logo) {
+      // Omitir si es string vacío, o podrías manejarlo como prefieras
+      // Generalmente no se reenvía la URL en FormData
     }
 
     return formData;

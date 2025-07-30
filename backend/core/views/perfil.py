@@ -24,6 +24,7 @@ class PerfilViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
+
     def perform_update(self, serializer):
         if self.request.user != serializer.instance.user:
             raise PermissionDenied("No tenés permiso para editar este perfil.")

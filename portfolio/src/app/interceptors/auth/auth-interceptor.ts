@@ -9,10 +9,6 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor() {
-    console.log('🚨 AuthInterceptor cargado');
-  }
-
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
@@ -20,8 +16,6 @@ export class AuthInterceptor implements HttpInterceptor {
     const token = localStorage.getItem('access_token');
 
     if (token) {
-      console.log('✅ Interceptor: se agregó el token ->', token);
-
       const cloned = req.clone({
         setHeaders: {
           Authorization: `Bearer ${token}`
@@ -31,7 +25,6 @@ export class AuthInterceptor implements HttpInterceptor {
       return next.handle(cloned);
     }
 
-    console.log('⚠️ Interceptor: no hay token en localStorage');
     return next.handle(req);
   }
 }

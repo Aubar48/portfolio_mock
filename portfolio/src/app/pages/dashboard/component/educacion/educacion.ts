@@ -64,15 +64,17 @@ export class EducacionComponent implements OnInit {
   enviarFormulario(): void {
     if (this.form.invalid) return;
 
-    const educacion: Educacion = {
-      titulo: this.form.value.titulo,
-      institucion: this.form.value.institucion,
-      fecha: this.form.value.fecha,
-      logo: this.archivoLogo || this.form.value.logo
-    };
+    const formData = new FormData();
+    formData.append('titulo', this.form.value.titulo);
+    formData.append('institucion', this.form.value.institucion);
+    formData.append('fecha', this.form.value.fecha);
+
+    if (this.archivoLogo) {
+      formData.append('logo', this.archivoLogo);
+    }
 
     if (this.editando && this.educacionActualId) {
-      this.educacionService.actualizarEducacion(this.educacionActualId, educacion).subscribe({
+      this.educacionService.actualizarEducacion(this.educacionActualId, formData).subscribe({
         next: () => {
           this.cargarEducaciones();
           this.cancelarEdicion();
@@ -80,7 +82,7 @@ export class EducacionComponent implements OnInit {
         error: (err) => console.error('Error al actualizar educación', err)
       });
     } else {
-      this.educacionService.crearEducacion(educacion).subscribe({
+      this.educacionService.crearEducacion(formData).subscribe({
         next: () => {
           this.cargarEducaciones();
           this.form.reset();
