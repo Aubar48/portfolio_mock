@@ -9,18 +9,16 @@
                 🐣 {{ perfil.descripcion }}
             </p>
             <section>
-                <ul>
-                    <li>
-                        <a href="{{ perfil.github }}" target="_blank">
-                            <img class="gap-3"
-                                src="https://img.shields.io/badge/Portfolio-%23333?style=for-the-badge&logo=portfolio&logoColor=white">
-                        </a>
-                        <a href="{{ perfil.linkedin }}" target="_blank">
-                            <img class="gap-3"
-                                src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white">
-                        </a>
-                    </li>
-                </ul>
+
+                <a href="{{ perfil.github }}" target="_blank">
+                    <img class="gap-3"
+                        src="https://img.shields.io/badge/Portfolio-%23333?style=for-the-badge&logo=portfolio&logoColor=white">
+                </a>
+                <a href="{{ perfil.linkedin }}" target="_blank">
+                    <img class="gap-3"
+                        src="https://img.shields.io/badge/-LinkedIn-%230077B5?style=for-the-badge&logo=linkedin&logoColor=white">
+                </a>
+
             </section>
         </div>
         <div class="col-md-6">
@@ -29,14 +27,10 @@
         </div>
         <!-- Tecnologías -->
         <section class="mb-5" *ngIf="tecnologias.length > 0">
-            <h3 class="text-primary mt-4">Tecnologías</h3>
-            <ul>
-                <li>
-                    <div class="d-flex flex-wrap gap-3 fs-2">
-                        <i *ngFor="let tech of tecnologias" [class]="tech.icono" [attr.title]="tech.nombre"></i>
-                    </div>
-                </li>
-            </ul>
+            <div class="d-flex flex-wrap gap-3 fs-2">
+                <i *ngFor="let tech of tecnologias" [class]="tech.icono" [attr.title]="tech.nombre"></i>
+            </div>
+
         </section>
     </div>
 </div>
