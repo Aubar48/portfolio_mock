@@ -29,3 +29,14 @@ function scrollToTop() {
 
 // Initialize AOS
 AOS.init();
+
+// Modal cv
+
+document.querySelector('.ver-cv').addEventListener('click', function (e) {
+    e.preventDefault();
+    document.getElementById('modal-cv').style.display = 'block';
+});
+
+function cerrarModalCV() {
+    document.getElementById('modal-cv').style.display = 'none';
+}
