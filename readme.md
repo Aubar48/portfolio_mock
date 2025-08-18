@@ -41,3 +41,11 @@ Este proyecto es un Portfolio personal desarrollado para mostrar información pr
 - ├── styles.css              # Estilos personalizados
 - ├── script.js               # Funciones JS (tema, scroll, etc.)
 - └── index.html              # Página principal
+
+- 📥 [Descargar CV](./assets/Curriculum_Vitae_Nahuel_Argandoña.pdf)  
+- 🔎 [Ver CV Online](https://www.canva.com/design/DAFoP4HTDqk/YW9Jg6z0ouwf7GeaChLSvg/view?utm_content=DAFoP4HTDqk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=he143a9d067)  
+
+- 📧 Contacto: [LinkedIn](https://www.linkedin.com/in/aubar48/)  
+- 🌍 Ubicación: Córdoba, Argentina
+- 💼 Portfolio: [netlify](https://glittering-lolly-b5e4d4.netlify.app/)  
+
