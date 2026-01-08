@@ -49,6 +49,11 @@ body {
   .carousel-indicators {
     display: none !important;
   }
+
+  /* Reducir altura del carousel en mobile */
+  .carousel-item img {
+    max-height: 100px;
+  }
 }
 
 /* Dark Mode */

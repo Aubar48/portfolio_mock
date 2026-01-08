@@ -14,12 +14,24 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
   <link rel="icon" href="data:,">
   
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css">
-
+  <!-- Preconnect to CDNs -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="dns-prefetch" href="https://raw.githubusercontent.com">
+  
+  <!-- Preload critical CSS -->
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="styles.css">
+  
+  <!-- Defer non-critical CSS -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"></noscript>
+  <link rel="preload" href="https://unpkg.com/aos@next/dist/aos.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css"></noscript>
+  <link rel="preload" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"></noscript>
 </head>
 
 <body>
@@ -54,10 +66,10 @@
     </div>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="./assets/carrousel/ispc.webp" class="d-block w-100" alt="...">
+        <img src="./assets/carrousel/ispc.webp" class="d-block w-100" alt="ISPC Banner" width="1715" height="263" loading="lazy">
       </div>
       <div class="carousel-item">
-        <img src="./assets/carrousel/ispc2.webp" class="d-block w-100" alt="...">
+        <img src="./assets/carrousel/ispc2.webp" class="d-block w-100" alt="ISPC Banner 2" width="1715" height="263" loading="lazy">
       </div>
     </div>
   </section>
@@ -108,32 +120,33 @@
             </div>
 
             <section class="icons-skills">
-              <img align="center" alt="Python - Lenguaje de programación" height="40" width="50"
+              <img  alt="Python - Lenguaje de programación" height="40" width="50" loading="lazy"
                 src="https://raw.githubusercontent.com/devicons/devicon/master/icons/python/python-original.svg">
-              <img align="center" alt="JavaScript - Lenguaje de programación" height="30" width="40"
+              <img  alt="JavaScript - Lenguaje de programación" height="30" width="40" loading="lazy"
                 src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg">
-              <img align="center" alt="HTML5 - Marcado web" height="30" width="40"
+              <img  alt="HTML5 - Marcado web" height="30" width="40" loading="lazy"
                 src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
-              <img align="center" alt="CSS3 - Estilos web" height="30" width="40"
+              <img  alt="CSS3 - Estilos web" height="30" width="40" loading="lazy"
                 src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
-              <img align="center" alt="Bootstrap - Framework CSS" height="40" width="50"
+              <img  alt="Bootstrap - Framework CSS" height="40" width="50" loading="lazy"
                 src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original.svg">
-              <img align="center" alt="Tailwind CSS - Framework CSS" height="40" width="50"
+              <img  alt="Tailwind CSS - Framework CSS" height="40" width="50" loading="lazy"
                 src="https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg">
-              <img align="center" alt="React - Biblioteca JavaScript" height="40" width="50"
+              <img  alt="React - Biblioteca JavaScript" height="40" width="50" loading="lazy"
                 src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg">
-              <img align="center" alt="Angular - Framework JavaScript" height="40" width="50"
+              <img  alt="Angular - Framework JavaScript" height="40" width="50" loading="lazy"
                 src="https://raw.githubusercontent.com/devicons/devicon/master/icons/angular/angular-original.svg">
-              <img align="center" alt="MySQL - Base de datos" height="40" width="50"
+              <img  alt="MySQL - Base de datos" height="40" width="50" loading="lazy"
                 src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original.svg">
-              <img align="center" alt="MongoDB - Base de datos NoSQL" height="40" width="50"
+              <img  alt="MongoDB - Base de datos NoSQL" height="40" width="50" loading="lazy"
                 src="https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original.svg">
             </section>
 
           </section>
           <section class="col-md-4">
-            <img src="./assets/profile/nahuel.webp" alt="Perfil"
-              class="border-bottom border-top border-primary border-3 img-fluid rounded shadow">
+            <img src="./assets/profile/nahuel.webp" alt="Perfil de Nahuel Argandoña"
+              class="border-bottom border-top border-primary border-3 img-fluid rounded shadow"
+              width="972" height="1296" fetchpriority="high">
           </section>
         </div>
       </section>
@@ -154,7 +167,7 @@
                   <div class="card shadow-sm mb-3 draggable-card" draggable="true">
                     <div class="card-body d-flex">
                       <div class="me-3">
-                        <img src="./assets/experiencia/sanatorio_frances.webp" alt="Logo empresa" class="rounded">
+                        <img src="./assets/experiencia/sanatorio_frances.webp" alt="Logo Sanatorio Frances" class="rounded" width="64" height="64" loading="lazy">
                       </div>
                       <div>
                         <h5 class="fw-semibold mb-1">Soporte tecnico informatico</h5>
@@ -166,7 +179,7 @@
                   <div class="card shadow-sm mb-3 draggable-card" draggable="true">
                     <div class="card-body d-flex">
                       <div class="me-3">
-                        <img src="./assets/experiencia/dges.webp" alt="Logo empresa" class="rounded">
+                        <img src="./assets/experiencia/dges.webp" alt="Logo DGES" class="rounded" width="64" height="64" loading="lazy">
                       </div>
                       <div>
                         <h5 class="fw-semibold mb-1">Equipo de Desarrollo</h5>
@@ -195,7 +208,7 @@
                   <div class="card shadow-sm mb-3 draggable-card" draggable="true">
                     <div class="card-body d-flex">
                       <div class="me-3">
-                        <img src="assets/estudios/ISPC.webp" alt="Logo institución" class="rounded">
+                        <img src="assets/estudios/ISPC.webp" alt="Logo ISPC" class="rounded" width="64" height="64" loading="lazy">
                       </div>
                       <div>
                         <h5 class="fw-semibold mb-1">Instituto Superior Politécnico de Córdoba</h5>
@@ -207,7 +220,7 @@
                   <div class="card shadow-sm mb-3 draggable-card" draggable="true">
                     <div class="card-body d-flex">
                       <div class="me-3 rounded">
-                        <img src="./assets/estudios/dev.webp" alt="Logo institución" class="rounded">
+                        <img src="./assets/estudios/dev.webp" alt="Logo Technology with Purpose" class="rounded" width="64" height="64" loading="lazy">
                       </div>
                       <div>
                         <h5 class="fw-semibold mb-1">Technology with Purpose</h5>
@@ -236,7 +249,7 @@
               <div id="collapseProyectos" class="accordion-collapse collapse show">
                 <div class="accordion-body">
                   <div class="card shadow-sm mb-3">
-                    <img src="./assets/proyectos/dges4.webp" class="project-image" alt="DGES Website">
+                    <img src="./assets/proyectos/dges4.webp" class="project-image" alt="Portal DGES Website" width="1561" height="917" loading="lazy">
                     <div class="card-body">
                       <h5 class="card-title">Portal DGES</h5>
                       <p class="card-text">Desarrollo del sitio web institucional de la Dirección General de Educación Superior de Córdoba utilizando WordPress y PHP.
@@ -256,7 +269,7 @@
                   </div>
 
                   <div class="card shadow-sm mb-3">
-                    <img src="./assets/proyectos/portfolio_angular.webp" class="project-image" alt="E-commerce Platform">
+                    <img src="./assets/proyectos/portfolio_angular.webp" class="project-image" alt="Portfolio Angular" width="1537" height="904" loading="lazy">
                     <div class="card-body">
                       <h5 class="card-title">Portfolio proyecto</h5>
                       <p class="card-text">Se escalo el portfolio basico a nuevas tecnologias, usando en el frontend Angular y
@@ -277,7 +290,7 @@
                   </div>
 
                   <div class="card shadow-sm mb-3">
-                    <img src="assets/proyectos/app-clima.webp" class="project-image" alt="Task Manager">
+                    <img src="assets/proyectos/app-clima.webp" class="project-image" alt="App del Clima" width="1177" height="692" loading="lazy">
                     <div class="card-body">
                       <h5 class="card-title">App del clima</h5>
                       <p class="card-text">Se hizo uso de la Api Weatherclima para generar una interfaz grafica para poder
@@ -342,9 +355,9 @@
   </button>
 
   <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script src="./script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="https://unpkg.com/aos@next/dist/aos.js" defer></script>
+  <script src="./script.js" defer></script>
 </body>
 
 </html>
