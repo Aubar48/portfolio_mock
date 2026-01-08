@@ -24,6 +24,22 @@ body {
   object-fit: cover;
 }
 
+/* Carousel indicators always black */
+.carousel-indicators button {
+  background-color: #000 !important;
+}
+
+[data-bs-theme="dark"] .carousel-indicators button {
+  background-color: #000 !important;
+}
+
+/* Hide carousel indicators on mobile */
+@media (max-width: 768px) {
+  .carousel-indicators {
+    display: none !important;
+  }
+}
+
 /* Dark Mode */
 [data-bs-theme="dark"] .navbar {
   background-color: #212529 !important;
@@ -94,8 +110,177 @@ body {
   width: 100%;
 }
 
+.card {
+  overflow: hidden;
+}
+
+/* Grid para proyectos en pantallas grandes */
+@media (min-width: 1024px) {
+  #accordionProyectos .accordion-body {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1rem;
+  }
+
+  #accordionProyectos .card {
+    margin-bottom: 0 !important;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #accordionProyectos .card-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  #accordionProyectos .card-text {
+    flex: 1;
+    font-size: 0.9rem;
+  }
+
+  #accordionProyectos .card-title {
+    font-size: 1.1rem;
+  }
+
+  #accordionProyectos .project-image {
+    height: 180px;
+  }
+}
+
+/* Para pantallas más grandes, más espacio */
+@media (min-width: 1400px) {
+  #accordionProyectos .accordion-body {
+    gap: 1.5rem;
+    padding: 1.5rem;
+  }
+
+  #accordionProyectos .card-body {
+    padding: 1.25rem;
+  }
+
+  #accordionProyectos .card-text {
+    font-size: 1rem;
+  }
+
+  #accordionProyectos .project-image {
+    height: 200px;
+  }
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+}
+
+.card-title {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.card-text {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Badge container */
+.d-flex.gap-2.mb-3 {
+  flex-wrap: wrap;
+}
+
+/* Igualar altura de Experiencia y Educación solo en desktop grande */
+@media (min-width: 320px) and (max-width: 1999px) {
+  .row.mb-5 > .col-md-6 {
+    display: flex;
+  }
+
+  .row.mb-5 > .col-md-6 .accordion {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .row.mb-5 > .col-md-6 .accordion-item {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .row.mb-5 > .col-md-6 .accordion-collapse {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .row.mb-5 > .col-md-6 .accordion-body {
+    flex: 1;
+  }
+}
+
+/* Experiencia y Educación apiladas verticalmente en 992px o menos */
+@media (max-width: 992px) {
+  .row.mb-5 > .col-md-6 {
+    width: 100%;
+    max-width: 100%;
+    flex: 0 0 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .row.mb-5 > .col-md-6:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Foto de perfil pegada al borde derecho desde 993px */
+@media (min-width: 993px) {
+  #about .col-md-6:last-child {
+    padding-right: 0 !important;
+  }
+
+  #about .img-fluid.rounded.shadow {
+    max-width: 100%;
+    margin-right: 0;
+    margin-left: auto;
+    display: block;
+  }
+
+  /* Asegurar que el contenedor principal no tenga padding derecho en esta sección */
+  #about .row.align-items-center {
+    margin-right: 0 !important;
+  }
+
+  /* Eliminar espacio derecho en Experiencia y Educación */
+  .row.mb-5 {
+    margin-right: 0 !important;
+  }
+
+  .row.mb-5 > .col-md-6 {
+    padding-right: 0 !important;
+  }
+
+  /* Eliminar espacio derecho en Proyectos */
+  .row.mb-5 > .col-12 {
+    padding-right: 0 !important;
+  }
+
+  /* Eliminar espacio derecho en Spotify player */
+  section.container.mb-5 {
+    padding-right: 0 !important;
+  }
+}
+
 .icons-skills{
-padding-top: 5px;
+  padding-top: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
 }
 
 /* Profile Image */
@@ -107,26 +292,269 @@ padding-top: 5px;
 
 /* Spotify Player */
 .spotify-player {
-  border-radius: 12px;
   width: 100%;
 }
 
 /* Responsive Adjustments */
-@media (max-width: 768px) {
+@media (max-width: 991px) {
+  /* Botones sociales en línea horizontal */
+  section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  section a {
+    display: inline-block;
+  }
+}
+
+@media (max-width: 1023px) {
   .social-links {
     justify-content: center;
+  }
+
+  /* Alinear navbar con el contenido */
+  .navbar.px-4 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  .navbar .container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    max-width: 100%;
+  }
+
+  .navbar-toggler {
+    margin-left: 0;
+    padding-left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5rem;
+  }
+
+  .navbar-toggler-icon {
+    background-position: center !important;
+    width: 1.5em;
+    height: 1.5em;
+  }
+
+  /* Botón Dark Mode en móvil */
+  .btn.btn-outline-primary.nav-link {
+    margin-top: 0 !important;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    width: auto;
+  }
+
+  .navbar-collapse {
+    margin-top: 1rem;
+  }
+
+  /* Espacio entre Experiencia y Educación */
+  .row.mb-5 > .col-md-6:first-child {
+    margin-bottom: 2rem;
+  }
+
+  /* Links sociales en columna centrados */
+  #about section > a {
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+  }
+
+  #about section > a img {
+    display: inline-block;
+    max-width: 100%;
+  }
+
+  /* Iconos de skills centrados y mejor espaciados */
+  .icons-skills {
+    justify-content: center;
+    gap: 15px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .icons-skills img {
+    width: 45px !important;
+    height: 45px !important;
+  }
+
+  /* Orden de elementos en móvil */
+  #about .row.align-items-center {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #about .col-md-6:first-child {
+    order: 2;
+  }
+
+  #about .col-md-6:last-child {
+    order: 1;
+    margin-bottom: 20px;
+  }
+
+  /* Alinear todos los containers en mobile */
+  main.container,
+  section.container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Remover padding lateral solo en secciones específicas */
+  .row.mb-5 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100% !important;
+  }
+
+  .row.mb-5 > [class*="col-"] {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    max-width: 100% !important;
+  }
+
+  /* Cards sin bordes laterales para ocupar todo el ancho */
+  .card {
+    border-left: none !important;
+    border-right: none !important;
+    border-radius: 0 !important;
+  }
+
+  /* Accordion sin bordes laterales */
+  .accordion-item {
+    border-left: none !important;
+    border-right: none !important;
+    border-radius: 0 !important;
+  }
+
+  /* Asegurar que todos los accordion-button tengan el mismo estilo */
+  .accordion-button {
+    background-color: var(--bs-accordion-btn-bg, #e7f1ff) !important;
+  }
+
+  .accordion-button:not(.collapsed) {
+    background-color: var(--bs-accordion-active-bg, #e7f1ff) !important;
+  }
+}
+
+/* Responsive Adjustments - Solo móviles pequeños */
+@media (max-width: 768px) {
+  /* Ajustes adicionales específicos para móviles muy pequeños si es necesario */
+}
+
+/* Móviles pequeños: añadir padding para que el texto no quede pegado */
+@media (min-width: 320px) and (max-width: 425px) {
+  main.container,
+  section.container {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+
+  #about .col-md-6 {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+}
+
+/* Tablet: Experiencia y Educación apiladas verticalmente */
+@media (min-width: 768px) and (max-width: 1023px) {
+  /* Eliminar padding lateral del contenedor principal */
+  main.container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  /* Eliminar márgenes de las rows */
+  main.container .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  /* Sobre mí: texto a la izquierda, foto a la derecha */
+  #about .col-md-6:first-child {
+    order: 1 !important;
+    flex: 0 0 50%;
+    max-width: 50%;
+    padding-left: 1rem;
+  }
+
+  #about .col-md-6:last-child {
+    order: 2 !important;
+    flex: 0 0 50%;
+    max-width: 50%;
+    margin-bottom: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  #about .row.align-items-center {
+    flex-direction: row !important;
+    margin-right: 0 !important;
+  }
+
+  /* Links sociales horizontales */
+  #about section > a {
+    display: inline-block !important;
+    text-align: left !important;
+    margin-bottom: 0 !important;
+    margin-right: 10px;
+  }
+
+  /* Foto pegada al borde derecho */
+  #about .img-fluid.rounded.shadow {
+    margin-right: 0;
+    margin-left: 50px;
+    display: block;
+  }
+
+  /* Mantener Experiencia y Educación apiladas verticalmente */
+  .row.mb-5 > .col-md-6 {
+    flex: 0 0 100%;
+    max-width: 100%;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  /* Quitar bordes en dark mode */
+  [data-bs-theme="dark"] .card {
+    border-left: none !important;
+    border-right: none !important;
+  }
+
+  [data-bs-theme="dark"] .accordion-item {
+    border-left: none !important;
+    border-right: none !important;
+  }
+
+  /* Mantener espacio entre Experiencia y Educación */
+  .row.mb-5 > .col-md-6:first-child {
+    margin-bottom: 2rem !important;
   }
 }
 
 /* Company and Institution Logos */
-.card-body .rounded {
+.card-body .me-3 img {
   width: 60px;
   height: 60px;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 /* WhatsApp Icon */
 .navbar-nav img[alt="WhatsApp"] {
   width: 31px;
   height: 31px;
+}
+
+.row{
+  display: flex;
+  justify-content: space-between;
 }

@@ -74,10 +74,15 @@
             <p>Aprender y construir en tecnología es una verdadera pasión para mí. ¡Gracias por tomarte el tiempo de
               mirar</p>
             <section>
+            
               <a href="https://www.canva.com/design/DAFoP4HTDqk/YW9Jg6z0ouwf7GeaChLSvg/view?utm_content=DAFoP4HTDqk&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=he143a9d067"
                 target="_blank" class="ver-cv">
                 <img
-                  src="https://img.shields.io/badge/Curriculum-%23333?style=for-the-badge&logo=curriculum&logoColor=white">
+                  src="https://img.shields.io/badge/CV--CANVA-%230077B5?style=for-the-badge&logo=curriculum&logoColor=white">
+              </a>
+              <a href="./assets/CV_Nahuel_Argandona.pdf" target="_blank">
+                <img
+                  src="https://img.shields.io/badge/CV--ATS-%23333?style=for-the-badge&logo=adobe-acrobat-reader&logoColor=white">
               </a>
               <a href="https://www.linkedin.com/in/Aubar48" target="_blank">
                 <img
@@ -119,7 +124,7 @@
             </section>
 
           </section>
-          <section class="col-md-6">
+          <section class="col-md-4">
             <img src="./assets/profile/nahuel.webp" alt="Perfil"
               class="border-bottom border-top border-primary border-3 img-fluid rounded shadow">
           </section>
@@ -132,14 +137,13 @@
         <section class="col-md-6">
           <div class="accordion" id="accordionExperiencia">
             <div class="accordion-item">
-              <h2 class="accordion-header">
+              <h2 class="accordion-header" id="headingExperiencia">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                   data-bs-target="#collapseExperiencia" aria-expanded="true" aria-controls="collapseExperiencia">
-                  <h3 class="mb-0 fw-bold">Experiencia</h3>
+                  <span class="fw-bold fs-5">Experiencia</span>
                 </button>
               </h2>
-              <div id="collapseExperiencia" class="accordion-collapse collapse show"
-                data-bs-parent="#accordionExperiencia">
+              <div id="collapseExperiencia" class="accordion-collapse collapse show">
                 <div class="accordion-body">
                   <div class="card shadow-sm mb-3">
                     <div class="card-body d-flex">
@@ -153,6 +157,18 @@
                       </div>
                     </div>
                   </div>
+                  <div class="card shadow-sm mb-3">
+                    <div class="card-body d-flex">
+                      <div class="me-3">
+                        <img src="./assets/experiencia/dges.webp" alt="Logo empresa" class="rounded">
+                      </div>
+                      <div>
+                        <h5 class="fw-semibold mb-1">Equipo de Desarrollo</h5>
+                        <p class="mb-1 text-muted">Dirección General de Educación Superior</p>
+                        <p class="mb-1"><small class="text-muted">Nov 2025</small></p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -163,13 +179,13 @@
         <section class="col-md-6">
           <div class="accordion" id="accordionEducacion">
             <div class="accordion-item">
-              <h2 class="accordion-header">
+              <h2 class="accordion-header" id="headingEducacion">
                 <button class="accordion-button" type="button" data-bs-toggle="collapse"
                   data-bs-target="#collapseEducacion" aria-expanded="true" aria-controls="collapseEducacion">
-                  <h3 class="mb-0 fw-bold">Educación</h3>
+                  <span class="fw-bold fs-5">Educación</span>
                 </button>
               </h2>
-              <div id="collapseEducacion" class="accordion-collapse collapse show" data-bs-parent="#accordionEducacion">
+              <div id="collapseEducacion" class="accordion-collapse collapse show">
                 <div class="accordion-body">
                   <div class="card shadow-sm mb-3">
                     <div class="card-body d-flex">
@@ -203,78 +219,84 @@
       </section>
 
       <!-- Proyectos -->
-      <section class="col-12" data-aos="fade-up">
-        <h2 class="text-center text-primary mb-4">Proyectos Destacados</h2>
-        <div class="row">
-          <section class="col-12 col-lg-4 mb-4">
-            <div class="card h-100 shadow-sm">
-              <img src="./assets/proyectos/pokemon.webp" class="project-image" alt="E-commerce Platform">
-              <div class="card-body">
-                <h5 class="card-title">Pokemon lista</h5>
-                <p class="card-text">Se utilizo la api de pokemon para hacer una lista de pokemones mostrados en cartas
-                  con sus respectivos stat's.
-                </p>
-                <div class="d-flex gap-2 mb-3">
-                  <span class="badge bg-primary">React</span>
-                  <span class="badge bg-success">Tailwindcss</span>
-                  <span class="badge bg-info">JavaScript</span>
-                  <span class="badge bg-primary">Api</span>
-                </div>
-                <div class="d-flex gap-2">
-                  <a href="https://allpokemoncard48.netlify.app/" class="btn btn-outline-primary btn-sm">Demo</a>
-                  <a href="https://github.com/Aubar48/angular_list_pokemon"
-                    class="btn btn-outline-secondary btn-sm">Código</a>
-                </div>
-              </div>
-            </div>
-          </section>
+      <section class="row mb-5">
+        <section class="col-12">
+          <div class="accordion" id="accordionProyectos">
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="headingProyectos">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                  data-bs-target="#collapseProyectos" aria-expanded="true" aria-controls="collapseProyectos">
+                  <span class="fw-bold fs-5">Proyectos Destacados</span>
+                </button>
+              </h2>
+              <div id="collapseProyectos" class="accordion-collapse collapse show">
+                <div class="accordion-body">
+                  <div class="card shadow-sm mb-3">
+                    <img src="./assets/proyectos/dges4.webp" class="project-image" alt="DGES Website">
+                    <div class="card-body">
+                      <h5 class="card-title">Portal DGES</h5>
+                      <p class="card-text">Desarrollo del sitio web institucional de la Dirección General de Educación Superior de Córdoba utilizando WordPress y PHP.
+                      </p>
+                      <div class="d-flex gap-2 mb-3">
+                        <span class="badge bg-primary">WordPress</span>
+                        <span class="badge bg-success">PHP</span>
+                        <span class="badge bg-info">JavaScript</span>
+                        <span class="badge bg-warning">HTML/CSS</span>
+                      </div>
+                      <div class="d-flex gap-2">
+                        <a href="https://dges-cba.edu.ar/wp/" class="btn btn-outline-primary btn-sm" target="_blank">Demo</a>
+                        <a href="https://github.com/ispc-pasantia-2025"
+                          class="btn btn-outline-secondary btn-sm" target="_blank">Código</a>
+                      </div>
+                    </div>
+                  </div>
 
-          <section class="col-12 col-lg-4 mb-4">
-            <div class="card h-100 shadow-sm">
-              <img src="./assets/proyectos/portfolio_angular.webp" class="project-image" alt="E-commerce Platform">
-              <div class="card-body">
-                <h5 class="card-title">Portfolio proyecto</h5>
-                <p class="card-text">Se escalo el portfolio basico a nuevas tecnologias, usando en el frontend Angular y
-                  creando una Api rest con Django.
-                </p>
-                <div class="d-flex gap-2 mb-3">
-                  <span class="badge bg-primary">Angular</span>
-                  <span class="badge bg-success">Bootstrap</span>
-                  <span class="badge bg-info">Typescript</span>
-                  <span class="badge bg-primary">Django</span>
-                </div>
-                <div class="d-flex gap-2">
-                  <a href="https://glittering-lolly-b5e4d4.netlify.app/" class="btn btn-outline-primary btn-sm">Demo</a>
-                  <a href="https://github.com/Aubar48/portfolio_mock"
-                    class="btn btn-outline-secondary btn-sm">Código</a>
-                </div>
-              </div>
-            </div>
-          </section>
+                  <div class="card shadow-sm mb-3">
+                    <img src="./assets/proyectos/portfolio_angular.webp" class="project-image" alt="E-commerce Platform">
+                    <div class="card-body">
+                      <h5 class="card-title">Portfolio proyecto</h5>
+                      <p class="card-text">Se escalo el portfolio basico a nuevas tecnologias, usando en el frontend Angular y
+                        creando una Api rest con Django.
+                      </p>
+                      <div class="d-flex gap-2 mb-3">
+                        <span class="badge bg-primary">Angular</span>
+                        <span class="badge bg-success">Bootstrap</span>
+                        <span class="badge bg-info">Typescript</span>
+                        <span class="badge bg-primary">Django</span>
+                      </div>
+                      <div class="d-flex gap-2">
+                        <a href="https://glittering-lolly-b5e4d4.netlify.app/" class="btn btn-outline-primary btn-sm">Demo</a>
+                        <a href="https://github.com/Aubar48/portfolio_mock"
+                          class="btn btn-outline-secondary btn-sm">Código</a>
+                      </div>
+                    </div>
+                  </div>
 
-          <section class="col-12 col-lg-4 mb-4">
-            <div class="card h-100 shadow-sm">
-              <img src="assets/proyectos/app-clima.webp" class="project-image" alt="Task Manager">
-              <div class="card-body">
-                <h5 class="card-title">App del clima</h5>
-                <p class="card-text">Se hizo uso de la Api Weatherclima para generar una interfaz grafica para poder
-                  visualizar el clima y en acompañar en la toma de desiciones cotidianas
-                </p>
-                <div class="d-flex gap-2 mb-3">
-                  <span class="badge bg-primary">React</span>
-                  <span class="badge bg-success">Tailwindcss</span>
-                  <span class="badge bg-info">JavaScript</span>
-                  <span class="badge bg-primary">Api</span>
-                </div>
-                <div class="d-flex gap-2">
-                  <a href="https://appclimanahuel.netlify.app/" class="btn btn-outline-primary btn-sm">Demo</a>
-                  <a href="https://github.com/Aubar48/app-clima-react"
-                    class="btn btn-outline-secondary btn-sm">Código</a>
+                  <div class="card shadow-sm mb-3">
+                    <img src="assets/proyectos/app-clima.webp" class="project-image" alt="Task Manager">
+                    <div class="card-body">
+                      <h5 class="card-title">App del clima</h5>
+                      <p class="card-text">Se hizo uso de la Api Weatherclima para generar una interfaz grafica para poder
+                        visualizar el clima y en acompañar en la toma de desiciones cotidianas
+                      </p>
+                      <div class="d-flex gap-2 mb-3">
+                        <span class="badge bg-primary">React</span>
+                        <span class="badge bg-success">Tailwindcss</span>
+                        <span class="badge bg-info">JavaScript</span>
+                        <span class="badge bg-primary">Api</span>
+                      </div>
+                      <div class="d-flex gap-2">
+                        <a href="https://appclimanahuel.netlify.app/" class="btn btn-outline-primary btn-sm">Demo</a>
+                        <a href="https://github.com/Aubar48/app-clima-react"
+                          class="btn btn-outline-secondary btn-sm">Código</a>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </section>
-        </div>
+          </div>
+        </section>
       </section>
 
     </div>
