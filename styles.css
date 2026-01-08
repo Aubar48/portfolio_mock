@@ -320,6 +320,16 @@ body {
   align-items: center;
 }
 
+.icons-skills img {
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3));
+  transition: all 0.3s ease;
+}
+
+.icons-skills img:hover {
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.5));
+  transform: translateY(-2px);
+}
+
 /* Profile Image */
 .img-fluid.rounded.shadow {
   max-width: 300px;
@@ -583,6 +593,25 @@ body {
   width: 60px;
   height: 60px;
   object-fit: contain;
+}
+
+/* Badges con mejor contraste para accesibilidad */
+.badge.bg-info-accessible {
+  background-color: #0891b2 !important;
+  color: #ffffff !important;
+}
+
+.badge.bg-warning-accessible {
+  background-color: #d97706 !important;
+  color: #ffffff !important;
+}
+
+[data-bs-theme="dark"] .badge.bg-info-accessible {
+  background-color: #06b6d4 !important;
+}
+
+[data-bs-theme="dark"] .badge.bg-warning-accessible {
+  background-color: #f59e0b !important;
 }
 
 /* WhatsApp Icon */
