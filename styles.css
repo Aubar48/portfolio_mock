@@ -114,6 +114,18 @@ body {
   overflow: hidden;
 }
 
+/* Animación de zoom para cards de proyectos */
+#accordionProyectos .card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+#accordionProyectos .card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2) !important;
+  z-index: 10;
+}
+
 /* Grid para proyectos en pantallas grandes */
 @media (min-width: 1024px) {
   #accordionProyectos .accordion-body {
