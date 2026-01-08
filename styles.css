@@ -201,6 +201,31 @@ body {
   word-wrap: break-word;
 }
 
+/* Drag and Drop Styles */
+.draggable-card {
+  cursor: move;
+  transition: all 0.3s ease;
+}
+
+.draggable-card.dragging {
+  opacity: 0.5;
+  transform: scale(0.95);
+}
+
+.draggable-card.drag-over {
+  border: 2px dashed #0d6efd;
+  background-color: rgba(13, 110, 253, 0.05);
+}
+
+[data-bs-theme="dark"] .draggable-card.drag-over {
+  border: 2px dashed #6ea8fe;
+  background-color: rgba(110, 168, 254, 0.1);
+}
+
+.draggable-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
 /* Badge container */
 .d-flex.gap-2.mb-3 {
   flex-wrap: wrap;
